@@ -2134,6 +2134,7 @@ function AuthScreen() {
   return (
     <div style={styles.authWrap}>
       {authWatermark}
+      <HomeLinkFloating />
       <form style={styles.authCard} onSubmit={submit} autoComplete="on">
         {brandBlock}
         <p style={styles.authSubtitle}>
@@ -8387,6 +8388,26 @@ function Settings({ classes, topics, onEditClass, onDeleteClass, leaders, curren
 // MAIN APP
 // ============================================================
 
+// Small "← Home" pill shown on the sign-in / no-access screens. The landing
+// page lives one folder up (../index.html).
+function HomeLinkFloating() {
+  return (
+    <a
+      href="../index.html"
+      aria-label="Back to Victory Alfonso home"
+      style={{
+        position: "fixed", top: "calc(14px + env(safe-area-inset-top, 0px))", left: 14, zIndex: 20,
+        display: "inline-flex", alignItems: "center", gap: 6, padding: "8px 14px", borderRadius: 999,
+        background: "rgba(255,255,255,0.75)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
+        border: "1px solid rgba(31,56,100,0.25)", color: "#1F3864", fontSize: 13, fontWeight: 600,
+        textDecoration: "none", fontFamily: "system-ui, sans-serif",
+      }}
+    >
+      <span aria-hidden="true">←</span> Home
+    </a>
+  );
+}
+
 function App() {
   const [authUser, setAuthUser] = useState(undefined); // undefined = loading, null = signed out
   // The app-open entrance animation (djAppEnter) ends on transform:
@@ -9664,6 +9685,7 @@ function App() {
         <div style={styles.watermark} className="dj-watermark" aria-hidden="true">
           <img src={WATERMARK_IMG} alt="" style={styles.watermarkImg} />
         </div>
+        <HomeLinkFloating />
         <div style={styles.authCard}>
           <div style={styles.authTopBar} />
           <div style={styles.authLogoWrap}>
@@ -9701,6 +9723,7 @@ function App() {
               {authUser.displayName || authUser.email}
               <span style={{ ...styles.roleBadge, ...(isLeader || isOneLeader ? styles.roleBadgeLeader : {}) }}>{isInSeniorPastorsList ? "Senior Pastor" : isInManagersList ? "Developer" : isLeader ? "Staff" : isOneLeader ? "ONE2ONE Leader" : "Viewer"}</span>
             </span>
+            <a href="../index.html" className="dj-sign-out" style={{ ...styles.signOutBtn, textDecoration: "none", display: "inline-flex", alignItems: "center" }}>← Home</a>
             <button className="dj-sign-out" style={styles.signOutBtn} onClick={() => auth.signOut()}>Sign out</button>
           </div>
         </header>
