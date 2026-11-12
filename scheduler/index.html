@@ -1068,6 +1068,7 @@ function EntryChoice({ onQuickView, onLogin }) {
   return (
     <div style={{ ...styles.setupScreen, position: "relative" }}>
       <ThemeToggle style={{ position: "absolute", top: "calc(16px + env(safe-area-inset-top, 0px))", right: 16 }} />
+      <a href="../index.html" style={{ ...styles.smallBtn, ...styles.homeLink, position: "absolute", top: "calc(16px + env(safe-area-inset-top, 0px))", left: 16 }}>← Home</a>
       <div style={styles.setupCard}>
         <h1 style={{ ...styles.h1, marginBottom: 10 }}>Victory Alfonso</h1>
         <p style={styles.setupText}>What would you like to do?</p>
@@ -1352,6 +1353,7 @@ function QuickView({ config, monthState, year, month, onPrevMonth, onNextMonth, 
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <a href="../index.html" style={{ ...styles.smallBtn, ...styles.homeLink }}>← Home</a>
             <button onClick={onLogin} style={styles.smallBtn}>🔑 Login</button>
             <ThemeToggle />
           </div>
@@ -4237,6 +4239,7 @@ function Sidebar({ config, monthState, week, setWeek, slot, setSlot, tab, setTab
       <aside className="no-print vms-sidebar" style={styles.sidebarCompact}>
         <InvertedLogo size={30} style={{ marginBottom: 6 }} />
         <nav style={styles.compactNavList}>
+          <CompactNavItem icon="🏠" label="Home" active={false} onClick={() => { window.location.href = "../index.html"; }} />
           <CompactNavItem icon={TAB_ICONS.myschedule} label="Mine" active={tab === "myschedule"} onClick={() => setTab("myschedule")} />
           <CompactNavItem icon={TAB_ICONS.assign} label="Assign" active={tab === "assign"} onClick={() => setTab("assign")} />
           <CompactNavItem icon={TAB_ICONS.info} label="Details" active={tab === "info"} onClick={() => setTab("info")} />
@@ -4294,6 +4297,7 @@ function Sidebar({ config, monthState, week, setWeek, slot, setSlot, tab, setTab
           <InvertedLogo size={44} />
           <div style={styles.brandTitle}>Victory Alfonso</div>
           <div style={styles.brandSub}>Volunteer Management System</div>
+          <a href="../index.html" style={styles.sidebarHomeLink}>← Home</a>
         </div>
 
         {userName && (
@@ -8095,6 +8099,8 @@ const styles = {
   iconDanger: { background: "var(--bF3E4DF)", color: "var(--tA6402F)", border: "none", borderRadius: 6, width: 26, height: 26, cursor: "pointer", fontSize: 16, lineHeight: 1, flexShrink: 0 },
   addRoleRow: { display: "flex", gap: 6, marginTop: 4 },
   smallBtn: { padding: "7px 12px", borderRadius: 6, border: "none", background: "var(--b1F3864)", color: "var(--tEFE7D3)", cursor: "pointer", fontSize: 13, fontFamily: "system-ui, sans-serif", whiteSpace: "nowrap" },
+  homeLink: { display: "inline-block", textDecoration: "none", boxSizing: "border-box" },
+  sidebarHomeLink: { display: "inline-block", marginTop: 12, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.25)", color: "inherit", fontSize: 12.5, fontWeight: 600, textDecoration: "none", fontFamily: "system-ui, sans-serif" },
   ghostBtn: { padding: "7px 12px", borderRadius: 6, border: "1px solid var(--lD8CFB0)", background: "var(--bFFFFFF)", color: "var(--t6B5E3E)", cursor: "pointer", fontSize: 13, fontFamily: "system-ui, sans-serif", whiteSpace: "nowrap" },
   toolbarInput: { padding: "7px 12px", boxSizing: "border-box", borderRadius: 6, border: "1px solid var(--lD8CFB0)", fontSize: 13.5, fontFamily: "system-ui, sans-serif", color: "var(--t2A2620)", outline: "none", background: "var(--bFFFFFF)" },
   lightCard: { background: "var(--bFBF8EE)", border: "1px solid var(--lEFE7D3)", borderRadius: 12, padding: "14px 18px" },
