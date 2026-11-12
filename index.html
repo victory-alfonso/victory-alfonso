@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Victory Church ministry tools: discipleship tracking and volunteer scheduling." />
+<meta name="theme-color" content="#0B3D82" />
+<title>Victory Church Ministry Tools</title>
+<link rel="icon" href="./scheduler/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="./scheduler/icons/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./scheduler/icons/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --page: #F2F6FB;
+    --ink: #0A2447;
+    --navy: #0B3D82;
+    --sky: #9AE5EF;
+    --cyan: #079FC8;
+    --muted: #4A5D78;
+    --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.5;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: clamp(28px, 6vw, 56px); }
+  header img { width: 40px; height: 40px; border-radius: 10px; display: block; }
+  header span { font-weight: 600; font-size: 1rem; color: var(--navy); }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    max-width: 14ch;
+  }
+  .lede { margin: 0 0 clamp(28px, 5vw, 44px); color: var(--muted); font-size: 1.05rem; max-width: 46ch; }
+
+  .cards { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; gap: 20px; } }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 36px;
+    min-height: 280px;
+    padding: 28px;
+    border-radius: 28px;
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card.dms { background: var(--navy); color: #fff; }
+  .card.vms { background: var(--sky); color: var(--ink); }
+
+  .card img { width: 64px; height: 64px; border-radius: 16px; display: block; }
+  .card.dms img { background: #fff; padding: 7px; }
+  .card h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+  .card p { margin: 0; font-size: 1rem; max-width: 34ch; }
+  .card.dms p { color: #D3E2F7; }
+  .card.vms p { color: #153A63; }
+
+  .open {
+    align-self: flex-start;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 12px 22px;
+    border-radius: 999px;
+  }
+  .dms .open { background: #fff; color: var(--navy); }
+  .vms .open { background: var(--navy); color: #fff; }
+
+  .card:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+  .card:active .open { transform: scale(0.97); }
+  @media (hover: hover) {
+    .card { transition: transform 160ms ease; }
+    .card:hover { transform: translateY(-4px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card:hover, .card:active .open { transition: none; transform: none; }
+  }
+
+  footer { margin-top: 36px; font-size: 0.875rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="./scheduler/icons/victory.png" alt="" />
+    <span>Victory Church</span>
+  </header>
+
+  <main>
+    <h1>Where are you working today?</h1>
+    <p class="lede">Pick a system to continue. Each one has its own sign-in.</p>
+
+    <div class="cards">
+      <a class="card dms" href="./journey/index.html">
+        <div>
+          <img src="./journey/icons/icon-192.png" alt="" />
+        </div>
+        <div>
+          <h2>Discipleship Management System</h2>
+          <p>Track class attendance, topics covered and progress for each member.</p>
+        </div>
+        <span class="open">Open Discipleship</span>
+      </a>
+
+      <a class="card vms" href="./scheduler/index.html">
+        <div>
+          <img src="./scheduler/icons/icon-192.png" alt="" />
+        </div>
+        <div>
+          <h2>Volunteer Management System</h2>
+          <p>Assign volunteers to ministry teams and catch double-bookings.</p>
+        </div>
+        <span class="open">Open Volunteers</span>
+      </a>
+    </div>
+  </main>
+</div>
+</body>
+</html>
